@@ -1,0 +1,50 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/app/chroma_db
+      - model_cache:/app/models
+    environment:
+      - LLM_PROVIDER=${LLM_PROVIDER:-groq}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+      - ALLOWED_ORIGINS=http://localhost:3001
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      # NO VITE_API_URL arg — so API_BASE falls back to "" (same-origin, nginx proxies /api/)
+    ports:
+      - "3001:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: on-failure
+
+volumes:
+  chroma_data:
+  model_cache:
+# Initial commit: project scaffold and repo setup
+# docker: add healthchecks and restart policies
+# docker: expose auth secret env vars in compose
+# Initial commit: project scaffold and repo setup
+# docker: add healthchecks and restart policies
+# docker: expose auth secret env vars in compose
+# Initial commit: project scaffold and repo setup
+# docker: add healthchecks and restart policies
+# docker: expose auth secret env vars in compose
+# Initial commit: project scaffold and repo setup
