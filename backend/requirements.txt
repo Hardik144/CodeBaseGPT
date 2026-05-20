@@ -1,0 +1,18 @@
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9
+httpx==0.27.0
+openai==1.30.0
+chromadb==0.5.23
+gitpython==3.1.43
+pydantic==2.7.1
+pydantic-settings==2.2.1
+rank-bm25==0.2.2
+python-dotenv==1.0.1
+sse-starlette==2.1.3
+aiofiles==23.2.1
+sentence-transformers==3.2.1
+# backend: add Dockerfile, requirements and base config
+# backend: add Dockerfile, requirements and base config
+# backend: add Dockerfile, requirements and base config
+# backend: add Dockerfile, requirements and base config
