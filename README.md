@@ -221,3 +221,4 @@ codebasegpt/
 └── .env.example
 ```
 # Initial commit: project scaffold and repo setup
+# docs: update README with local setup instructions
