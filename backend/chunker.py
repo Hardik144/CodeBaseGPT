@@ -412,3 +412,4 @@ def chunk_repository(repo_path: str) -> list[CodeChunk]:
 # backend: improve chunker with overlap and min-size filter
 # backend: tune chunk size and overlap for better recall
 # backend: add text chunking with configurable size
+# backend: improve chunker with overlap and min-size filter
