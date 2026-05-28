@@ -53,3 +53,4 @@ def embed_documents(docs: list[str]) -> list[list[float]]:
 # backend: add OpenAI embedding module
 # backend: add retry and backoff to embedder
 # backend: add OpenAI embedding module
+# backend: add retry and backoff to embedder
