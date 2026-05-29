@@ -198,3 +198,4 @@ def get_store(repo_id: str) -> HybridStore:
 # backend: add vector store interface (ChromaDB)
 # backend: refactor store with batch upsert support
 # backend: add vector store interface (ChromaDB)
+# backend: refactor store with batch upsert support
