@@ -40,3 +40,4 @@ def get_settings() -> Settings:
 # refactor: split config into backend and shared settings
 # backend: add Dockerfile, requirements and base config
 # backend: refine config with model and index settings
+# backend: centralise all model and DB config values
