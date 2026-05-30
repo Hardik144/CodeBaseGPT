@@ -222,3 +222,4 @@ codebasegpt/
 ```
 # Initial commit: project scaffold and repo setup
 # docs: update README with local setup instructions
+# docs: add architecture overview to README
