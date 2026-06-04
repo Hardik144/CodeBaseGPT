@@ -140,3 +140,4 @@ async def repo_info(repo_id: str):
 # backend: add /health endpoint for Docker healthcheck
 # chore: clean up unused imports across backend
 # backend: add FastAPI main entry point
+# backend: add per-user rate limiting on chat endpoint
