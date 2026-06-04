@@ -49,3 +49,4 @@ volumes:
 # docker: expose auth secret env vars in compose
 # Initial commit: project scaffold and repo setup
 # docker: add healthchecks and restart policies
+# docker: expose auth secret env vars in compose
