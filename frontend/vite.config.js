@@ -18,3 +18,4 @@ export default defineConfig({
 # frontend: scaffold Vite app with Dockerfile and index
 # fix: update vite proxy target for local dev server
 # frontend: scaffold Vite app with Dockerfile and index
+# fix: update vite proxy target for local dev server
