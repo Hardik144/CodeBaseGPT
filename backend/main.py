@@ -141,3 +141,4 @@ async def repo_info(repo_id: str):
 # chore: clean up unused imports across backend
 # backend: add FastAPI main entry point
 # backend: add per-user rate limiting on chat endpoint
+# fix: correct CORS origins in main.py
