@@ -179,3 +179,4 @@ async def run_ingestion(job: IngestionJob):
 # backend: add document delete and re-ingest endpoints
 # backend: validate MIME types and file size on ingest
 # backend: implement document ingestion pipeline
+# backend: add document delete and re-ingest endpoints
