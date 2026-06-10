@@ -220,7 +220,3 @@ codebasegpt/
 ├── docker-compose.yml
 └── .env.example
 ```
-# Initial commit: project scaffold and repo setup
-# docs: update README with local setup instructions
-# docs: add architecture overview to README
-# docs: add API endpoint reference to README
