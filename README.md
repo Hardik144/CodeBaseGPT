@@ -3,9 +3,9 @@
 Ask questions about any GitHub codebase in plain English. **100% free to run.**
 
 ```
-"How does authentication work?" → cites auth/utils.py:34-67
+"How does authentication work?"     → cites auth/utils.py:34-67
 "Where is database connection handled?" → cites db/connection.py:12-28
-"Explain the request lifecycle" → synthesizes 6 relevant chunks with citations
+"Explain the request lifecycle"     → synthesizes 6 relevant chunks with citations
 ```
 
 ## Zero cost setup
@@ -38,12 +38,12 @@ GEMINI_API_KEY=AIza-your-key-here
 Get a free Gemini key at **aistudio.google.com/apikey** → Create API Key (no credit card).
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 Open **http://localhost:3000**, paste any GitHub URL, click Index.
 
-> **First build takes ~5 min** — it downloads the 130MB embedding model once.  
+> **First build takes ~5 min** — it downloads the 130MB embedding model once.
 > Subsequent builds are fast (model is cached in a Docker volume).
 
 ---
@@ -95,13 +95,13 @@ Open **http://localhost:3000**, paste any GitHub URL, click Index.
 Most tools split code every N lines blindly — a function gets split mid-body and the AI gets broken context. This chunker understands code structure:
 
 ```
-Naive:          authenticate_user(     ← chunk 1 ends here
-                    payload = decode   ← chunk 2 starts here (broken!)
+Naive:      authenticate_user(     ← chunk 1 ends here
+                payload = decode   ← chunk 2 starts here (broken!)
 
-AST-aware:      authenticate_user(     ← one complete chunk
-                    payload = decode
-                    user = db.get(...)
-                    return user        ← ends at function boundary ✓
+AST-aware:  authenticate_user(     ← one complete chunk
+                payload = decode
+                user = db.get(...)
+                return user        ← ends at function boundary ✓
 ```
 
 ### Retrieval pipeline
@@ -173,10 +173,10 @@ This is what you show in interviews as proof the system works.
 ## Resume bullet
 
 ```
-Built CodebaseGPT — an AI codebase Q&A system using AST-aware RAG (Tree-sitter 
-structural parsing, ChromaDB, BM25 hybrid search + RRF) with fully local embeddings 
-(BAAI/bge-small-en-v1.5) and Gemini 2.0 Flash for zero-cost inference. Chunks code 
-at semantic boundaries improving retrieval MRR@5 vs naive chunking. Deployed via 
+Built CodebaseGPT — an AI codebase Q&A system using AST-aware RAG (Tree-sitter
+structural parsing, ChromaDB, BM25 hybrid search + RRF) with fully local embeddings
+(BAAI/bge-small-en-v1.5) and Gemini 2.0 Flash for zero-cost inference. Chunks code
+at semantic boundaries improving retrieval MRR@5 vs naive chunking. Deployed via
 Docker Compose with FastAPI backend, React frontend, nginx SSE proxy.
 ```
 
@@ -209,14 +209,37 @@ codebasegpt/
 │   ├── store.py         # ChromaDB + BM25 hybrid store
 │   ├── ingestion.py     # Pipeline: clone → chunk → index
 │   ├── chat.py          # Context assembly + streaming generation
+│   ├── auth.py          # Authentication helpers
 │   ├── config.py        # Pydantic settings
 │   ├── eval.py          # Retrieval quality eval (MRR, Hit@k)
 │   ├── requirements.txt
 │   └── Dockerfile
 ├── frontend/
-│   ├── src/App.jsx      # Complete React app
+│   ├── src/
+│   │   ├── App.jsx              # Root app component
+│   │   ├── main.jsx             # Entry point
+│   │   ├── router.jsx           # Client-side routing
+│   │   ├── api/
+│   │   │   ├── chat.js          # Chat + ingest API calls
+│   │   │   └── auth.js          # Auth API calls
+│   │   ├── components/
+│   │   │   ├── ChatWindow.jsx
+│   │   │   ├── MessageList.jsx
+│   │   │   ├── InputBar.jsx
+│   │   │   ├── Citations.jsx
+│   │   │   ├── ProgressBar.jsx
+│   │   │   ├── Spinner.jsx
+│   │   │   ├── ErrorBoundary.jsx
+│   │   │   └── FileUpload.jsx
+│   │   ├── pages/
+│   │   │   ├── Login.jsx
+│   │   │   └── Register.jsx
+│   │   └── styles/
+│   │       └── bubbles.css
+│   ├── index.html
+│   ├── vite.config.js
 │   ├── nginx.conf       # SSE proxy config
-│   └── ...
+│   └── Dockerfile
 ├── docker-compose.yml
 └── .env.example
 ```
